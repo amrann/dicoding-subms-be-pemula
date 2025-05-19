@@ -23,12 +23,12 @@ const addBookHandler = (request, h) => {
 	}
 
 	const id = nanoid(16);
-	const insertAt = new Date().toISOString();
-	const updateAt = insertAt;
+	const insertedAt = new Date().toISOString();
+	const updatedAt = insertedAt;
 	const finished = pageCount === readPage ? true : false;
 
 	const newBook = {
-		id, name, year, author, summary, publisher, pageCount, readPage, finished, reading, insertAt, updateAt
+		id, name, year, author, summary, publisher, pageCount, readPage, finished, reading, insertedAt, updatedAt
 	};
 
 	books.push(newBook);
@@ -235,12 +235,12 @@ const editBooksByIdHandler = (request, h) => {
 		return response;
 	}
 
-	const updateAt = new Date().toISOString();
+	const updatedAt = new Date().toISOString();
 	const finished = pageCount === readPage ? true : false;
 
 	if (idx !== -1) {
 		books[idx] = {
-			...books[idx], name, year, author, summary, publisher, pageCount, readPage, finished, reading, updateAt
+			...books[idx], name, year, author, summary, publisher, pageCount, readPage, finished, reading, updatedAt
 		};
 		const response = h.response({
 			status: 'success',
